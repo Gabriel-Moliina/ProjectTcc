@@ -1,0 +1,10 @@
+.content-login{
+    display: flex;
+}
+
+.box-login{
+    box-shadow: 1px 1px 25px 0.4px rgba(255, 140, 140, 0.2);
+    height: 530px;
+    width: 530px;
+    border-radius: 30px;
+}
