@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 98vh;
+    height: 100vh;
 }
 
 .box-login{
@@ -12,4 +12,44 @@
     border-radius: 30px; 
     background: linear-gradient(to bottom right, white, rgba(245, 0, 0, 0.25));
     background-attachment: fixed;
+}
+
+.principal-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+#img-login{
+    border-radius: 50%;
+    box-shadow: 1px 1px 25px 0.4px rgba(80, 7, 7, 0.425);
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to bottom, white, 79%, rgb(231, 102, 102));
+    align-self: center;
+}
+
+#img-login img{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+input{
+    width: 60%;
+    height: 25px;
+    margin: 0 auto;
+    border: none; /* <-- This thing here */
+    border:solid 1px #ccc;
+    border-radius: 10px;
 }

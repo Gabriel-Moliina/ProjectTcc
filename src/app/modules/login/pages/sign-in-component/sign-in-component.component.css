@@ -1,0 +1,9 @@
+main{
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+.input-login{
+    width: 200px;
+}
