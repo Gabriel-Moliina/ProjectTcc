@@ -37,6 +37,7 @@
     position: relative;
     background: linear-gradient(to bottom, white, 79%, rgb(231, 102, 102));
     align-self: center;
+    margin-bottom: 5%;
 }
 
 #img-login img{

@@ -1,4 +1,12 @@
-
-<div>
-    <a [routerLink]="['/login/sign-in']">Efetuar login</a>
-</div>
+<main>
+    <div class="input-login">
+        <app-input placeHolder="Usuário"></app-input>
+    </div>
+    <div class="input-login">
+        <app-input placeHolder="Senha"></app-input>
+    </div>
+    <app-button textButton="Recuperar"></app-button>
+    <div>
+        <a [routerLink]="['/login/sign-in']">Efetuar login</a>
+    </div>
+</main>

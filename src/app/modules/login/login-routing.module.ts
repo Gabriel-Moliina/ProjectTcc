@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { SignInComponent } from './pages/sign-in-component/sign-in-component.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [{
   path: '',
@@ -11,6 +12,7 @@ const routes: Routes = [{
     { path: '', redirectTo: 'sign-in', pathMatch: 'full'},
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
+    { path: 'register', component: RegisterComponent },
   ]
 }];
 
