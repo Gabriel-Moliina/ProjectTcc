@@ -5,7 +5,7 @@
     <div class="input-login">
         <app-input placeHolder="Senha"></app-input>
     </div>
-    <app-button textButton="Acessar"></app-button>
+    <app-button [clickButton]="Login" textButton="Acessar"></app-button>
     <div>
         <a [routerLink]="['/login/sign-up']">Cadastre-se</a>
     </div>
