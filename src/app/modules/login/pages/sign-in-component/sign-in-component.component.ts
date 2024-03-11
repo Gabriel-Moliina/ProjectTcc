@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { InputComponent } from '../../../../view/input/input.component';
 import { ButtonComponent } from '../../../../view/button/button.component';
 
@@ -10,10 +10,12 @@ import { ButtonComponent } from '../../../../view/button/button.component';
     styleUrl: './sign-in-component.component.css',
     imports: [RouterLink, InputComponent, ButtonComponent]
 })
-export class SignInComponent {
-    constructor(private router: Router) {}
+export class SignInComponent{
+    constructor(private router: Router) {
+        
+    }
     
-    public Login() {
+    Login() {
         this.router.navigate(['/cards']);
     }
 }
