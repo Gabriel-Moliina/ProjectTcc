@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TccComponent } from './tcc.component';
-import { CardsComponent } from './pages/cards/cards.component';
+import { ProjectComponent } from './pages/project/project.component';
 
 const routes: Routes = [{
   path: '',
   component: TccComponent,
   children: [
-    { path: '', redirectTo: 'tcc-cards', pathMatch: 'full'},
-    { path: 'tcc-cards', component: CardsComponent },
+    { path: '', redirectTo: 'project', pathMatch: 'full'},
+    { path: 'project', component: ProjectComponent },
   ]
 }];
 

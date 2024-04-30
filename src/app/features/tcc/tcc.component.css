@@ -1,0 +1,22 @@
+.principal-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mat-drawer {
+    width: 15%;
+    background-color: #333;
+  }
+
+  .project-content{
+    backdrop-filter: blur(15px);
+  }
+
+.container-content{
+    height: 90%;
+    width: 90%;
+    background: none;
+}

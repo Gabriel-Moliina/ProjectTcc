@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ButtonComponent } from "../../../../view/button/button.component";
-import { InputComponent } from "../../../../view/input/input.component";
+import { InputComponent } from '../../../../core/components/input/input.component';
+import { ButtonComponent } from '../../../../core/components/button/button.component';
 
 @Component({
     selector: 'app-recover',

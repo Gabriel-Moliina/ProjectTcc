@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { InputComponent } from '../../../../view/input/input.component';
-import { ButtonComponent } from '../../../../view/button/button.component';
+import { ButtonComponent } from '../../../../core/components/button/button.component';
+import { InputComponent } from '../../../../core/components/input/input.component';
 
 @Component({
     selector: 'app-sign-in-component',
@@ -16,6 +16,6 @@ export class SignInComponent{
     }
     
     Login() {
-        this.router.navigate(['/cards']);
+        this.router.navigate(['/tcc']);
     }
 }
