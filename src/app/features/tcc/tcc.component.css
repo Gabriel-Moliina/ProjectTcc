@@ -8,15 +8,18 @@
 
 .mat-drawer {
     width: 15%;
-    background-color: #333;
+    background-color: #555454;
   }
 
   .project-content{
     backdrop-filter: blur(15px);
+    background-color: #FAF9F6;
   }
 
 .container-content{
-    height: 90%;
-    width: 90%;
+    height: 95%;
+    width: 95%;
     background: none;
+    border-radius: 0.5%;
+    box-shadow: 1px 1px 10px 0.4px rgba(104, 9, 9, 0.548);
 }
