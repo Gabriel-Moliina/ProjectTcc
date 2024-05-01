@@ -11,9 +11,10 @@
     background-color: #555454;
   }
 
-  .project-content{
+  .work-content{
     backdrop-filter: blur(15px);
     background-color: #FAF9F6;
+    max-height: 823.040px;
   }
 
 .container-content{
