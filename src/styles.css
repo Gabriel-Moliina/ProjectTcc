@@ -3,5 +3,5 @@ html{
     background: linear-gradient(to bottom right, white, rgb(228, 163, 163));
     background-attachment: fixed;
 }
-html, body { height: 100vh; width: 100vw; }
+html, body { height: 100%; width: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
