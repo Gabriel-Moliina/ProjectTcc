@@ -6,12 +6,12 @@ nav {
   
 .menu-list {
     list-style: none;
-    padding: 15%;
     margin: 0;
     height: 100%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    padding: 15px;
 }
 
 .menu-list li:not(:first-child) {

@@ -1,5 +1,5 @@
 input{
-    height: 15px;
+    height: 2em;
     margin: 0 auto;
     border: none; /* <-- This thing here */
     border:solid 1px #ccc;
