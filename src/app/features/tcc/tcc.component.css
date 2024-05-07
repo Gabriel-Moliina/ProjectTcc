@@ -6,8 +6,8 @@
     justify-content: center;
 }
 
-.mat-drawer {
-    width: 15%;
+.menu-side {
+    max-width: 250px;
     background-color: #555454;
   }
 
@@ -19,6 +19,7 @@
 .container-content{
     height: 95%;
     width: 95%;
+    min-width: 350px;
     background: none;
     border-radius: 0.5%;
     box-shadow: 1px 1px 10px 0.4px rgba(104, 9, 9, 0.548);
