@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TccComponent } from './tcc.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { StudentComponent } from './pages/student/student.component';
+import { ProjectCreateComponent } from './pages/project/project-create/project-create.component';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +11,7 @@ const routes: Routes = [{
   children: [
     { path: '', redirectTo: 'project', pathMatch: 'full'},
     { path: 'project', component: ProjectComponent },
+    { path: 'project/create', component: ProjectCreateComponent },
     { path: 'student', component: StudentComponent },
   ]
 }];
