@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../../core/components/button/button.component';
-import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @Component({
   selector: 'app-project',

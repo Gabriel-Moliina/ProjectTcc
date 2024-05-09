@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxDropzoneChangeEvent, NgxDropzoneModule } from 'ngx-dropzone';
 
 @Component({
   selector: 'app-project-create',
   standalone: true,
-  imports: [CommonModule, NgxDropzoneModule, NgSelectModule, FormsModule],
+  imports: [CommonModule, NgxDropzoneModule, FormsModule],
   templateUrl: './project-create.component.html',
   styleUrl: './project-create.component.css'
 })

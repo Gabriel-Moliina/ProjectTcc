@@ -6,14 +6,14 @@
                     <label for="exampleInputEmail1">Título do projeto</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
-                <div class="form-group input-group-project">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selecione uma opção</option>
+                <select class="form-select input-group-project" aria-label="Default select example">
+                    <option selected>Selecione um orientador</option>
                     <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
-                  </select>
+                </select>
+                <select class="form-select input-group-project" aria-label="Default select example">
+                    <option selected>Selecione um co-orientador</option>
+                    <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
+                </select>
                 <ngx-dropzone (change)="onFileDrop($event)" [multiple]="true" [maxFileSize]="1000000" [accept]="'image/*'">
                     <ngx-dropzone-label>Pré-Projeto de pesquisa</ngx-dropzone-label>
                 </ngx-dropzone>

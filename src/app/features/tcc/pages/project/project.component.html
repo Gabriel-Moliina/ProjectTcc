@@ -19,7 +19,7 @@
 
 <div *ngIf="!hasProject" class="container-center">
   <div [style]="'margin-bottom:0;align-self:self-end'">
-    <h1 [style]="'opacity:0.4'">Você ainda não possui nenhum trabalho cadastrado :(</h1>
+    <h1 [style]="'opacity:0.4;user-select:none'">Você ainda não possui nenhum trabalho cadastrado :(</h1>
   </div>
   <div>
     <app-button (clickButton)="createProject()" textButton="Iniciar agora"></app-button>
