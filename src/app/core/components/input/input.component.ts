@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class InputComponent {
   @Input({required : false}) placeHolder! : string
+  @Input({}) type! : string
 }

@@ -17,7 +17,7 @@ export class ProjectComponent {
         
   }
   
-  createProject() {
+  routeProjectCreate() {
       this.router.navigate(['/tcc/project/create']);
   }
   hasProject:boolean = false

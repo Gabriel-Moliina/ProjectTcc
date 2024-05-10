@@ -1,23 +1,59 @@
 <form>
-    <div class="container">
-        <div class="row">
-            <div class="col-5 mx-auto">
-                <div class="form-group input-group-project">
-                    <label for="exampleInputEmail1">Título do projeto</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <select class="form-select input-group-project" aria-label="Default select example">
-                    <option selected>Selecione um orientador</option>
-                    <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
-                </select>
-                <select class="form-select input-group-project" aria-label="Default select example">
-                    <option selected>Selecione um co-orientador</option>
-                    <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
-                </select>
-                <ngx-dropzone (change)="onFileDrop($event)" [multiple]="true" [maxFileSize]="1000000" [accept]="'image/*'">
-                    <ngx-dropzone-label>Pré-Projeto de pesquisa</ngx-dropzone-label>
-                </ngx-dropzone>
-            </div>
-        </div>
+    <!-- Botão de voltar para a primeira etapa -->
+    <div style="position: absolute; top: 20px; left: 20px;" *ngIf="etapaAtual == 2">
+      <button class="btn btn-link" (click)="etapaAtual = 1">
+        <i class="bi bi-arrow-left"></i> Voltar
+      </button>
     </div>
-</form>
+  
+    <div class="container" *ngIf="etapaAtual === 1">
+      <div class="row">
+        <div class="col-5 mx-auto">
+          <!-- Etapa 1: Formulário -->
+          <div>
+            <div class="form-group input-group-project">
+              <label for="titleProject">Título do projeto</label>
+              <input type="text" class="form-control" id="titleProject">
+            </div>
+            <div class="form-group input-group-project">
+              <label for="projectDescription">Descrição do projeto</label>
+              <textarea class="form-control" id="projectDescription" rows="3"></textarea>
+            </div>
+            <div class="form-group input-group-project">
+              <label for="orientadorSelect">Selecione um orientador</label>
+              <select class="form-select" id="orientadorSelect">
+                <option selected>Selecione um orientador</option>
+                <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
+              </select>
+            </div>
+            <div class="form-group input-group-project">
+              <label for="coorientadorSelect">Selecione um co-orientador</label>
+              <select class="form-select" id="coorientadorSelect">
+                <option selected>Selecione um co-orientador</option>
+                <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
+              </select>
+            </div>
+            <div style="text-align: center;">
+              <app-button (clickButton)="proximaEtapa()" textButton="Próximo"></app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container" *ngIf="etapaAtual === 2">
+      <div class="row">
+        <div class="col-5 mx-auto">
+          <!-- Etapa 2: Dropzone -->
+          <ngx-dropzone class="input-group-project dropzone-project" (change)="onFileDrop($event)"
+            [multiple]="true" [maxFileSize]="1000000" [accept]="'image/*'">
+            <ngx-dropzone-label>Pré-Projeto de pesquisa</ngx-dropzone-label>
+          </ngx-dropzone>
+          <div style="text-align: center;">
+            <app-button (clickButton)="criarProjeto()" textButton="Cadastrar"></app-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
