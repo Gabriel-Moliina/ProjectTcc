@@ -17,3 +17,25 @@ export class UserLogin {
         this.Password = password;
     }
 }
+
+export class UserToken {
+    public token: string;
+    public tokenInfos: PopulateToken
+
+    constructor(token: string, tokenInfo: PopulateToken) {
+        this.token = token;
+        this.tokenInfos = tokenInfo
+    }
+}
+
+class PopulateToken {
+    constructor(
+        public Id: string,
+        public Name: string,
+        public Email: string,
+        public PrivateEmail: string,
+        public Admin: string,
+        public Roles: string[]
+    ) {
+    }
+}

@@ -1,3 +1,16 @@
+#logOut{
+    font-size: 35px;
+    position:absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    transition: color 0.5s ease-in-out;
+}
+
+#logOut:hover{
+    color: red;
+}
+
 .user-container{
     height: 100%;
 }
