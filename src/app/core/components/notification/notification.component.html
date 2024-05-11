@@ -1,0 +1,7 @@
+
+<div class="notification-container">
+    <div *ngFor="let alert of notificationService.alerts" class="alert" [ngClass]="'alert-' + alert.type" [class.show]="alert.show" role="alert">
+      {{ alert.message }}
+    </div>
+  </div>
+  
