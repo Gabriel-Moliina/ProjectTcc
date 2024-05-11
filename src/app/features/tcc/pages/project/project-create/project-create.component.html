@@ -1,61 +1,67 @@
 <form>
-    <!-- Botão de voltar para a primeira etapa -->
-    <div style="position: absolute; top: 20px; left: 20px;" *ngIf="etapaAtual == 2">
-      <button class="btn btn-link" (click)="etapaAtual = 1">
-        <i class="bi bi-arrow-left"></i> Voltar
-      </button>
-    </div>
-  
-    <div class="container" [ngStyle]="{'display': etapaAtual === 1 ? 'block' : 'none'}">
-      <div class="row">
-        <div class="col-5 mx-auto">
-          <!-- Etapa 1: Formulário -->
-          <div>
-            <div class="form-group input-group-project">
-              <label for="Title">Título do projeto</label>
-              <input type="text" class="form-control" id="Title">
-            </div>
-            <div class="form-group input-group-project">
-              <label for="Description">Descrição do projeto</label>
-              <textarea class="form-control" id="Description" rows="3"></textarea>
-            </div>
-            <div class="form-group input-group-project">
-              <label for="Advisor">Selecione um orientador</label>
-              <select class="form-select" id="Advisor">
-                <option selected>Selecione um orientador</option>
-                <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
-              </select>
-            </div>
-            <div class="form-group input-group-project">
-              <label for="CoAdvisor">Selecione um co-orientador</label>
-              <select class="form-select" id="CoAdvisor">
-                <option selected>Selecione um co-orientador</option>
-                <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
-              </select>
-            </div>
-            <div style="text-align: center;">
-              <app-button (clickButton)="proximaEtapa()" textButton="Próximo"></app-button>
-            </div>
+  <div style="position: absolute; top: 20px; left: 20px;" *ngIf="etapaAtual === 2">
+    <button class="btn btn-link" (click)="etapaAtual = 1">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </button>
+  </div>
+
+  <div class="container" [ngStyle]="{'display': etapaAtual === 1 ? 'block' : 'none'}">
+    <div class="row">
+      <div class="col-5 mx-auto">
+        <div>
+          <div class="form-group input-group-project">
+            <label for="Title">Título do projeto</label>
+            <input type="text" class="form-control" id="Title">
           </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="container" [ngStyle]="{'display': etapaAtual === 2 ? 'block' : 'none'}">
-      <div class="row">
-        <div class="col-5 mx-auto">
-          <!-- Etapa 2: Dropzone -->
-          <ngx-dropzone (change)="onSelect($event)">
-            <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
-            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-            </ngx-dropzone-preview>
-          </ngx-dropzone>
+          <div class="form-group input-group-project">
+            <label for="Description">Descrição do projeto</label>
+            <textarea class="form-control" id="Description" rows="3"></textarea>
+          </div>
+          <div class="form-group input-group-project">
+            <label for="Advisor">Selecione um orientador</label>
+            <select class="form-select" id="Advisor">
+              <option selected>Selecione um orientador</option>
+              <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
+            </select>
+          </div>
+          <div class="form-group input-group-project">
+            <label for="CoAdvisor">Selecione um co-orientador</label>
+            <select class="form-select" id="CoAdvisor">
+              <option selected>Selecione um co-orientador</option>
+              <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
+            </select>
+          </div>
           <div style="text-align: center;">
-            <app-button (clickButton)="criarProjeto()" textButton="Cadastrar"></app-button>
+            <app-button (clickButton)="nextStage()" textButton="Próximo"></app-button>
           </div>
         </div>
       </div>
     </div>
-  </form>
-  
+  </div>
+
+  <div class="container" [ngStyle]="{'display': etapaAtual === 2 ? 'block' : 'none'}">
+    <div class="row">
+      <div class="col-5 mx-auto">
+
+        <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
+          <ngx-dropzone-label>
+            <div>
+              <h2>
+                Pré-Projeto de pesquisa
+
+              </h2>
+            </div>
+          </ngx-dropzone-label>
+          <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
+
+
+        <div style="text-align: center;">
+          <app-button (clickButton)="createProject()" textButton="Cadastrar"></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -5,7 +5,6 @@ import { NgxDropzoneChangeEvent, NgxDropzoneModule } from 'ngx-dropzone';
 import { ButtonComponent } from '../../../../../core/components/button/button.component';
 import { RouterLink } from '@angular/router';
 import { Project } from '../../../../../models/Project';
-import { Advisor } from '../../../../../models/Advisor';
 
 @Component({
   selector: 'app-project-create',
@@ -14,58 +13,60 @@ import { Advisor } from '../../../../../models/Advisor';
   templateUrl: './project-create.component.html',
   styleUrl: './project-create.component.css'
 })
-export class ProjectCreateComponent implements OnInit{
+export class ProjectCreateComponent implements OnInit {
+  formData: FormData = new FormData();
   files: File[] = [];
-  etapaAtual: number = 1;
-  project: Project = new Project('', '', 0, 0, new FormData());
-  options: { id: number, text: string }[] = [
-    {id: 0, text: 'teste'},
-    {id: 1, text: 'teste2'},
-    {id: 2, text: 'teste3'},
-    {id: 3, text: 'teste4'},
-    {id: 4, text: 'teste5'},
-    {id: 5, text: 'teste6'},
-    {id: 6, text: 'teste7'},
-    {id: 7, text: 'teste8'},
-    {id: 8, text: 'teste9'},
-  ];
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
-  constructor() {}
+  options = [
+    { id: 0, text: 'Larissa do ADS', course: 'ADS' },
+    { id: 1, text: 'Larissa do meca', course: 'Mecatrônica' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
+    { id: 2, text: 'Larissa da gestão', course: 'Gestão' }
+  ]
 
-  proximaEtapa() {
+  onRemove(event: File) {
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  onSelect(event: NgxDropzoneChangeEvent) {
+    this.formData = new FormData();
+    this.files = event.addedFiles;
+    this.formData.append('file', this.files[0]);
+  }
+
+  etapaAtual = 1;
+
+  nextStage() {
     this.etapaAtual++;
   }
 
-  onSelect(event:any) {
-    const fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      const file: File = fileList[0]; // Pegar apenas o primeiro arquivo
-      const formData = new FormData();
-      formData.append('file', file, file.name); // Adicionar o arquivo ao FormData
-      this.project.ProjectData = formData; // Adicionar o FormData ao objeto Project
-      this.files.push(file); // Adicionar o arquivo à lista de arquivos
-    }
-  }
+  createProject() {
+    let project = new Project('', '', 0, 0, new FormData());
+    project.Title = (<HTMLInputElement>document.getElementById('Title')).value;
+    project.Description = (<HTMLTextAreaElement>document.getElementById('Description')).value;
+    project.AdvisorId = Number((<HTMLSelectElement>document.getElementById('Advisor')).value);
+    project.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value);
+    project.ProjectData = this.formData;
 
-  onRemove(file: File) {
-    // Lógica para remover o arquivo da lista de arquivos
-    const index = this.files.indexOf(file);
-    if (index > -1) {
-      this.files.splice(index, 1);
-    }
-  }
-
-  criarProjeto() {
-    this.project.Title = (<HTMLInputElement>document.getElementById('Title')).value;
-    this.project.Description = (<HTMLTextAreaElement>document.getElementById('Description')).value;
-    this.project.AdvisorId = Number((<HTMLSelectElement>document.getElementById('Advisor')).value);
-    this.project.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value); 
-
-    console.log(this.project);
+    console.log(project);
   }
 
 }

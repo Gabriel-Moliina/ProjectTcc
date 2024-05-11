@@ -6,3 +6,7 @@ form, .container{
     height: 100%;
     align-content: center;
 }
+
+ngx-dropzone {
+    justify-content: center;
+  }
