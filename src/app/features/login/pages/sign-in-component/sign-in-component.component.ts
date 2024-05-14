@@ -39,6 +39,7 @@ export class SignInComponent {
                     this.router.navigate(['/tcc']);
                 },
                 error: error => {
+                    debugger;
                     this.notificationService.showAlert('warning', error.error);
                     console.error(error)
                 }

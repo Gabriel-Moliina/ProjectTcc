@@ -10,3 +10,8 @@ form, .container{
 ngx-dropzone {
     justify-content: center;
   }
+
+  app-button{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

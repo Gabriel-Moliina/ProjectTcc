@@ -7,3 +7,22 @@
     display: grid;
     justify-items: center;
 }
+
+.orientador {
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
+.separador {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tabela-scroll {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.icon-reload {
+    margin-right: 5px;
+}

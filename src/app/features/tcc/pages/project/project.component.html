@@ -1,21 +1,92 @@
-<div *ngIf="hasProject" class="container">
-    <div class="row">
-      <div class="col-12">
-        <h1 [style]="'text-align:center'">Titulo projeto</h1>
+<div class="container-fluid d-flex flex-column" *ngIf="hasProject">
+
+  <header class="text-center py-4 separador">
+      <h1>Titulo do Projeto</h1>
+      <h2 class="orientador">Nome do Orientador</h2>
+  </header>
+
+  <div class="row flex-grow-1">
+      <div class="col-lg-6">
+          <div class="p-4">
+              <h3>Descrição do Projeto</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra lectus sit amet semper
+                  tempus. Nullam et nulla sit amet tellus faucibus rhoncus.</p>
+          </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        1 of 3
+      <div class="col-lg-6">
+        <div style="display: flex;">
+          <h3>Prazo de Entrega</h3>
+          <div>
+          <a>
+            <fa-icon [icon]="faRefresh"></fa-icon>
+          </a>
+        </div>
+        </div>
+          <div class="tabela-scroll">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Data</th>
+                          <th>Descrição</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>01/05/2024</td>
+                          <td>Entrega do Projeto Inicial</td>
+                      </tr>
+                      <tr>
+                          <td>15/06/2024</td>
+                          <td>Revisão do Projeto</td>
+                      </tr>
+                      <tr>
+                        <td>15/06/2024</td>
+                        <td>Revisão do Projeto</td>
+                    </tr>
+                    <tr>
+                      <td>15/06/2024</td>
+                      <td>Revisão do Projeto</td>
+                  </tr>
+                  <tr>
+                    <td>15/06/2024</td>
+                    <td>Revisão do Projeto</td>
+                </tr>
+                <tr>
+                  <td>15/06/2024</td>
+                  <td>Revisão do Projeto</td>
+              </tr>
+              <tr>
+                <td>15/06/2024</td>
+                <td>Revisão do Projeto</td>
+            </tr>
+            <tr>
+                          <td>15/06/2024</td>
+                          <td>Revisão do Projeto</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div class="p-4">
+              <h3>Anexar Documento</h3>
+              <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
+                <ngx-dropzone-label>
+                  <div>
+                    <h3>
+                      Anexe aqui o documento requisitado na data
+                    </h3>
+                  </div>
+                </ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+              <div style="margin-top: 15px; display: flex; justify-content: end;">
+                <app-button (clickButton)="null" textButton="Enviar"></app-button>
+              </div>
+          </div>
       </div>
-      <div class="col">
-        2 of 3
-      </div>
-      <div class="col">
-        3 of 3
-      </div>
-    </div>
   </div>
+</div>
 
 <div *ngIf="!hasProject" class="container-center">
   <div [style]="'margin-bottom:0;align-self:self-end'">
