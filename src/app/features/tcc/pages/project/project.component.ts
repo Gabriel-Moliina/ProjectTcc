@@ -35,7 +35,7 @@ export class ProjectComponent {
   routeProjectCreate() {
       this.router.navigate(['/tcc/project/create']);
   }
-  hasProject:boolean = true
+  hasProject:boolean = false
 
   faRefresh = faRefresh
 }

@@ -1,25 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgControlStatus } from '@angular/forms';
 import { NgxDropzoneChangeEvent, NgxDropzoneModule } from 'ngx-dropzone';
 import { ButtonComponent } from '../../../../../core/components/button/button.component';
 import { RouterLink } from '@angular/router';
-import { Project } from '../../../../../models/Project';
+import { Article } from '../../../../../models/Article';
+import { ArticleService } from '../../../../../services/ArticleService';
 
 @Component({
   selector: 'app-project-create',
   standalone: true,
   imports: [CommonModule, NgxDropzoneModule, FormsModule, ButtonComponent, RouterLink],
   templateUrl: './project-create.component.html',
-  styleUrl: './project-create.component.css'
+  styleUrl: './project-create.component.css',
+  providers: [ArticleService]
 })
-export class ProjectCreateComponent implements OnInit {
-  formData: FormData = new FormData();
-  files: File[] = [];
-
-  ngOnInit() {
+export class ProjectCreateComponent {
+  constructor(private articleService: ArticleService){
 
   }
+
+  formData: FormData = new FormData();
+  files: File[] = [];
 
   options = [
     { id: 0, text: 'Larissa do ADS', course: 'ADS' },
@@ -49,7 +51,7 @@ export class ProjectCreateComponent implements OnInit {
   onSelect(event: NgxDropzoneChangeEvent) {
     this.formData = new FormData();
     this.files = event.addedFiles;
-    this.formData.append('file', this.files[0]);
+    this.formData.append('Form', <File>this.files[0]);
   }
 
   etapaAtual = 1;
@@ -59,14 +61,23 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   createProject() {
-    let project = new Project('', '', 0, 0, new FormData());
-    project.Title = (<HTMLInputElement>document.getElementById('Title')).value;
-    project.Description = (<HTMLTextAreaElement>document.getElementById('Description')).value;
-    project.AdvisorId = Number((<HTMLSelectElement>document.getElementById('Advisor')).value);
-    project.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value);
-    project.ProjectData = this.formData;
-
-    console.log(project);
+    let article = new Article('', '', 0, 0);
+    article.Title = (<HTMLInputElement>document.getElementById('Title')).value;
+    article.Description = (<HTMLTextAreaElement>document.getElementById('Description')).value;
+    article.AdvisorId = Number((<HTMLSelectElement>document.getElementById('Advisor')).value);
+    article.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value);
+    
+    this.articleService.create(article).subscribe({
+      next: response => {
+          let documentTcc = new FormData();
+          documentTcc.append('Id', response.toString())
+          documentTcc.append('FormFile', this.files[0])
+          this.articleService.linkDocument(documentTcc).subscribe()
+      },
+      error: error => {
+          
+      }
+  })
   }
 
 }
