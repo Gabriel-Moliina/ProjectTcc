@@ -15,7 +15,7 @@ const routes: Routes = [{
     { path: '', redirectTo: 'project', pathMatch: 'full'},
     { path: 'project', component: ProjectComponent, canActivate: [AuthGuard] },
     { path: 'projects', component: ProjectListComponent },
-    { path: 'project/:id', component: ProjectDetailComponent },
+    { path: 'project-detail/:id', component: ProjectDetailComponent },
     { path: 'project/create', component: ProjectCreateComponent },
     { path: 'student', component: StudentComponent },
   ]
