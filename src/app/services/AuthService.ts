@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
-  isLoggedIn(): boolean {
-    // Implemente a lógica para verificar se o usuário está logado (por exemplo, se o token JWT existe e é válido)
-    return true; // Exemplo básico: sempre retorna verdadeiro
+  isAdmin(): boolean {
+    return this.cookieService.get('Admin') === '1'
   }
-
-  // Outros métodos para verificar as permissões do usuário, como verificar o papel do usuário, etc.
 }

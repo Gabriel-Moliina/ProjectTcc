@@ -7,11 +7,11 @@ import { UserService } from '../../../../services/UserService';
   selector: 'app-student',
   standalone: true,
   imports: [FontAwesomeModule],
-  templateUrl: './student.component.html',
-  styleUrl: './student.component.css',
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css',
   providers: [UserService]
 })
-export class StudentComponent {
+export class UserComponent {
   constructor(private userService: UserService) {
     
   }

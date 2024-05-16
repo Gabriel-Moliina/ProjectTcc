@@ -36,10 +36,10 @@ export class SignInComponent {
                     const expirationDate = new Date();
                     expirationDate.setDate(expirationDate.getDate() + 1);
                     this.cookieService.set('tokenUser', response.token, expirationDate)
+                    this.cookieService.set('Admin', Number(response.tokenInfos.admin).toString(), expirationDate)
                     this.router.navigate(['/tcc']);
                 },
                 error: error => {
-                    debugger;
                     this.notificationService.showAlert('warning', error.error);
                     console.error(error)
                 }

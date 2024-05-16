@@ -30,12 +30,12 @@ export class UserToken {
 
 class PopulateToken {
     constructor(
-        public Id: string,
-        public Name: string,
-        public Email: string,
-        public PrivateEmail: string,
-        public Admin: string,
-        public Roles: string[]
+        public id: string,
+        public name: string,
+        public email: string,
+        public privateEmail: string,
+        public admin: boolean,
+        public roles: string[]
     ) {
     }
 }
