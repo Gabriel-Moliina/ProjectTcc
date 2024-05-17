@@ -8,6 +8,10 @@ export class AuthService {
 
   constructor(private cookieService: CookieService) { }
 
+  getToken():string{
+    return this.cookieService.get('tokenUser');
+  }
+
   isAdmin(): boolean {
     return this.cookieService.get('Admin') === '1'
   }
