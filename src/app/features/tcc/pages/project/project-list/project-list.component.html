@@ -6,8 +6,7 @@
                     <div class="card-body">
                         <h5 class="card-title">
                             {{ project.title }}
-                            <fa-icon class="project-trash" (click)="deleteProject(project.id)"
-                                [icon]="faTrash"></fa-icon>
+                            <fa-icon class="project-trash" (click)="deleteProject($event, project.id)" [icon]="faTrash"></fa-icon>
                         </h5>
                         <div class="stakeholder">
                             <h6 class="card-subtitle mb-2 text-muted">Aluno: {{ project.author }}</h6>

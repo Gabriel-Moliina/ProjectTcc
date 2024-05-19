@@ -29,10 +29,11 @@ export class ProjectListComponent implements OnInit {
     this.router.navigate([`/tcc/projectDetail/${id}`]);
   }
 
-  deleteProject(id: number): void {
-    // Lógica para deletar o projeto
-    console.log(`Deleting project with id ${id}`);
-  }
+  deleteProject(event: Event, projectId: number) {
+    event.stopPropagation();
+    this.articleService.delete(projectId).subscribe()
+}
+
 
   faTrash = faTrash;
 }

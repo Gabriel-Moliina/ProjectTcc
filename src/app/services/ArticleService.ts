@@ -34,4 +34,8 @@ export class ArticleService {
   getById(id: number): Observable<ArticleDeliveryDateViewModel> {
     return this.http.get<ArticleDeliveryDateViewModel>(`${this.baseUrl}/GetById/${id}`);
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/Delete/${id}`);
+  }
 }
