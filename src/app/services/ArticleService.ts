@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ENVIRONMENT } from '../../environment';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { Article, ArticleDTO } from '../models/Article';
+import { Article, ArticleDTO, ArticleDeliveryDateViewModel, ArticleGridViewModel } from '../models/Article';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,17 @@ export class ArticleService {
 
   linkDocument(form: FormData): Observable<ArticleDTO> {
     return this.http.post<ArticleDTO>(`${this.baseUrl}/LinkDocument`, form);
+  }
+
+  getByAuthorId(): Observable<ArticleDeliveryDateViewModel> {
+    return this.http.get<ArticleDeliveryDateViewModel>(`${this.baseUrl}/GetByAuthorId`);
+  }
+
+  getAll(): Observable<ArticleGridViewModel[]> {
+    return this.http.get<ArticleGridViewModel[]>(`${this.baseUrl}/GetAll`);
+  }
+
+  getById(id: number): Observable<ArticleDeliveryDateViewModel> {
+    return this.http.get<ArticleDeliveryDateViewModel>(`${this.baseUrl}/GetById/${id}`);
   }
 }

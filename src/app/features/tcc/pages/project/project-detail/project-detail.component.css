@@ -1,0 +1,40 @@
+.container{
+    height: 100%;
+}
+
+.container-center{
+    height: 100%;
+    display: grid;
+    justify-items: center;
+}
+
+.orientador {
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
+.separador {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tabela-scroll {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.icon-reload {
+    position: absolute;
+    right: 15px;
+}
+
+#back-page{
+    position: absolute;
+    left: 20px; 
+    top: 30px;
+    font-size: 44px;
+    padding: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}

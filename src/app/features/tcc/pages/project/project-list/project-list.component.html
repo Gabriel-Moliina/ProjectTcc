@@ -1,1 +1,21 @@
-<p>project-list works!</p>
+<div class="container mt-4">
+    <div class="row">
+        <div *ngFor="let project of projects" class="col-md-3 mb-4 d-flex">
+            <a (click)="goToDetail(project.id)" style="cursor: pointer; width: 100%;">
+                <div class="card card-project h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ project.title }}
+                            <fa-icon class="project-trash" (click)="deleteProject(project.id)"
+                                [icon]="faTrash"></fa-icon>
+                        </h5>
+                        <div class="stakeholder">
+                            <h6 class="card-subtitle mb-2 text-muted">Aluno: {{ project.author }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Orientador: {{ project.advisor }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

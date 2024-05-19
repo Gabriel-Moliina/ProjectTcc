@@ -24,5 +24,22 @@
 }
 
 .icon-reload {
-    margin-right: 5px;
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+}
+
+.icon-reload:hover{
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-timing-function: linear; 
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }

@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgControlStatus } from '@angular/forms';
 import { NgxDropzoneChangeEvent, NgxDropzoneModule } from 'ngx-dropzone';
 import { ButtonComponent } from '../../../../../core/components/button/button.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Article } from '../../../../../models/Article';
 import { ArticleService } from '../../../../../services/ArticleService';
+import { NotificationService } from '../../../../../services/NotificationService';
 
 @Component({
   selector: 'app-project-create',
@@ -16,7 +17,7 @@ import { ArticleService } from '../../../../../services/ArticleService';
   providers: [ArticleService]
 })
 export class ProjectCreateComponent {
-  constructor(private articleService: ArticleService){
+  constructor(private articleService: ArticleService, private notificationService: NotificationService, private router: Router){
 
   }
 
@@ -66,16 +67,23 @@ export class ProjectCreateComponent {
     article.Description = (<HTMLTextAreaElement>document.getElementById('Description')).value;
     article.AdvisorId = Number((<HTMLSelectElement>document.getElementById('Advisor')).value);
     article.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value);
+    article.CoAdvisorCurriculumLink = (<HTMLSelectElement>document.getElementById('CoAdvisorCurriculumLink')).value;
+    article.AdvisorCurriculumLink = (<HTMLSelectElement>document.getElementById('AdvisorCurriculumLink')).value;
     
     this.articleService.create(article).subscribe({
       next: response => {
           let documentTcc = new FormData();
           documentTcc.append('Id', response.toString())
           documentTcc.append('FormFile', this.files[0])
-          this.articleService.linkDocument(documentTcc).subscribe()
+          this.articleService.linkDocument(documentTcc).subscribe({
+            next: response =>{
+              this.router.navigate(['/tcc/project'])
+            }
+          })
+          
       },
       error: error => {
-          
+        this.notificationService.showAlert('warning', error.error)
       }
   })
   }

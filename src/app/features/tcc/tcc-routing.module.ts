@@ -17,7 +17,7 @@ const routes: Routes = [{
     { path: '', redirectTo: 'user', pathMatch: 'full', },
     { path: 'project', component: ProjectComponent, canActivate: [StudentGuard] },
     { path: 'projects', component: ProjectListComponent, canActivate: [AdminGuard] },
-    { path: 'project-detail/:id', component: ProjectDetailComponent, canActivate: [AdminGuard] },
+    { path: 'projectDetail/:id', component: ProjectDetailComponent, canActivate: [AdminGuard] },
     { path: 'project/create', component: ProjectCreateComponent, canActivate: [StudentGuard] },
     { path: 'user', component: UserComponent },
   ]

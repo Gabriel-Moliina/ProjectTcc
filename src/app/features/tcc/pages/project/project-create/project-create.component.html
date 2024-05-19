@@ -25,13 +25,21 @@
             </select>
           </div>
           <div class="form-group input-group-project">
+            <label for="Description">Link Currículo Lattes do Orientador</label>
+            <input type="text" class="form-control" id="AdvisorCurriculumLink" rows="3">
+          </div>
+          <div class="form-group input-group-project">
             <label for="CoAdvisor">Selecione um co-orientador</label>
             <select class="form-select" id="CoAdvisor">
               <option selected>Selecione um co-orientador</option>
               <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
             </select>
           </div>
-          <div style="text-align: center;">
+          <div class="form-group input-group-project">
+            <label for="Description">Link Currículo Lattes do Coorientador</label>
+            <input type="text" class="form-control" id="CoAdvisorCurriculumLink" rows="3">
+          </div>
+          <div style="text-align: center;margin-bottom: 15px;">
             <app-button (clickButton)="nextStage()" textButton="Próximo"></app-button>
           </div>
         </div>
@@ -53,7 +61,7 @@
             </div>
           </ngx-dropzone-label>
           <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
           </ngx-dropzone-preview>
         </ngx-dropzone>
 
