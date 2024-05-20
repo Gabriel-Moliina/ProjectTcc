@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgControlStatus } from '@angular/forms';
 import { NgxDropzoneChangeEvent, NgxDropzoneModule } from 'ngx-dropzone';
-import { ButtonComponent } from '../../../../../core/components/button/button.component';
+import { ButtonComponent } from '../../../../core/components/button/button.component';
 import { Router, RouterLink } from '@angular/router';
-import { Article } from '../../../../../models/Article';
-import { ArticleService } from '../../../../../services/ArticleService';
-import { NotificationService } from '../../../../../services/NotificationService';
+import { Article } from '../../../../models/Article';
+import { ArticleService } from '../../../../services/ArticleService';
+import { NotificationService } from '../../../../services/NotificationService';
 
 @Component({
   selector: 'app-project-create',

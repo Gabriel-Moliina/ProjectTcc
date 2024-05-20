@@ -16,6 +16,7 @@ import { debug } from 'console';
 export class MenuComponent {
   projectRoute:string = '/tcc/project'
   constructor(private authService: AuthService){
+    debugger;
     if(authService.isAdmin())
       this.projectRoute = '/tcc/projects'
   }

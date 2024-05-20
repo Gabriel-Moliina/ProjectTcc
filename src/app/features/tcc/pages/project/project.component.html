@@ -41,7 +41,7 @@
         <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
           <ngx-dropzone-label>
             <div>
-              <h3>Anexe aqui o documento requisitado na data</h3>
+              <h3>Anexe aqui o documento</h3>
             </div>
           </ngx-dropzone-label>
           <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
