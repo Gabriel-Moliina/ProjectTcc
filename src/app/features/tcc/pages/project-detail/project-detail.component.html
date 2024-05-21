@@ -4,7 +4,10 @@
       <fa-icon [icon]="faLeftLong"></fa-icon>
     </a>
     <h1>{{ project?.title }}</h1>
-    <h2 class="orientador">{{ project?.advisor }}</h2>
+    <div class="info-stakeholder">
+      <span>Aluno: {{ project?.author }}</span><br/>
+      <span>Orientador: {{ project?.advisor }}</span>
+    </div>
   </header>
 
   <div class="row flex-grow-1">

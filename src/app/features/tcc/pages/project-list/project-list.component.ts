@@ -16,18 +16,25 @@ import { NotificationService } from '../../../../services/NotificationService';
   styleUrls: ['./project-list.component.css'],
   providers: [ArticleService]
 })
-export class ProjectListComponent implements OnInit {
+export class ProjectListComponent {
   @ViewChild('deleteModal') deleteModal!: TemplateRef<any>;
   projects: ArticleGridViewModel[] = [];
   selectedProjectId!: number;
   private modalRef!: NgbModalRef;
+  initialized: boolean = false;
 
-  constructor(private articleService: ArticleService, private router: Router, private modalService: NgbModal, private notificationService: NotificationService) { }
-
-  ngOnInit(): void {
+  constructor(private articleService: ArticleService,
+    private router: Router,
+    private modalService: NgbModal,
+    private notificationService: NotificationService) {
     this.articleService.getAll().subscribe(response => {
       this.projects = response;
+    }, error=>{
+
+    }, () => {
+      this.initialized = true;
     });
+
   }
 
   goToDetail(id: number): void {
@@ -38,7 +45,7 @@ export class ProjectListComponent implements OnInit {
     this.articleService.delete(projectId).subscribe(reseponse => {
       this.projects = this.projects.filter(project => project.id !== projectId);
       this.notificationService.showAlert('success', 'Projeto excluído!')
-    }, error =>{
+    }, error => {
       this.notificationService.showAlert('error', error.error)
     });
   }

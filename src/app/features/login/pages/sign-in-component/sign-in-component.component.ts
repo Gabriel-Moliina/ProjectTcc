@@ -5,7 +5,6 @@ import { InputComponent } from '../../../../core/components/input/input.componen
 import { UserService } from '../../../../services/UserService';
 import { UserLogin } from '../../../../models/User';
 import { NotificationService } from '../../../../services/NotificationService';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     selector: 'app-sign-in-component',
@@ -18,8 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class SignInComponent {
     constructor(private router: Router, 
         private userService: UserService, 
-        private notificationService: NotificationService,
-        private cookieService: CookieService
+        private notificationService: NotificationService
     ) {
 
     }
@@ -35,8 +33,8 @@ export class SignInComponent {
                 next: response => {
                     const expirationDate = new Date();
                     expirationDate.setDate(expirationDate.getDate() + 1);
-                    this.cookieService.set('tokenUser', response.token, expirationDate)
-                    this.cookieService.set('Admin', Number(response.tokenInfos.admin).toString(), expirationDate)
+                    localStorage.setItem('tokenUser', response.token)
+                    localStorage.setItem('Admin', Number(response.tokenInfos.admin).toString())
                     this.router.navigate(['/tcc']);
                 },
                 error: error => {

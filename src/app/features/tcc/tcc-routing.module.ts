@@ -9,6 +9,7 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
 import { AdminGuard } from '../../services/guards/AdminGuard';
 import { StudentGuard } from '../../services/guards/StudentGuard';
 import { DefaultGuard } from '../../services/guards/DefaultGuard';
+import { AdvisorComponent } from './pages/advisor/advisor.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,6 +17,7 @@ const routes: Routes = [{
   children: [
     { path: '', redirectTo: 'user', pathMatch: 'full', },
     { path: 'project', component: ProjectComponent, canActivate: [StudentGuard] },
+    { path: 'advisor', component: AdvisorComponent },
     { path: 'projects', component: ProjectListComponent, canActivate: [AdminGuard] },
     { path: 'projectDetail/:id', component: ProjectDetailComponent, canActivate: [AdminGuard] },
     { path: 'project/create', component: ProjectCreateComponent, canActivate: [StudentGuard] },

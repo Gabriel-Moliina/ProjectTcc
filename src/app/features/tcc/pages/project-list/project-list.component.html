@@ -1,43 +1,45 @@
-<div *ngIf="projects.length == 0" class="container-center">
-    <div>
-        <h1 [style]="'opacity:0.4;user-select:none'">Nenhum projeto encontrado :(</h1>
-    </div>
-</div>
-
-<div *ngIf="projects.length > 0" class="container mt-4">
-    <div class="row">
-        <div *ngFor="let project of projects" class="col-md-3 mb-4 d-flex">
-            <a (click)="goToDetail(project.id)" style="cursor: pointer; width: 100%;">
-                <div class="card card-project h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ project.title }}
-                            <fa-icon class="project-trash" (click)="openDeleteModal($event, project.id)"
-                                [icon]="faTrash"></fa-icon>
-                        </h5>
-                        <div class="stakeholder">
-                            <h6 class="card-subtitle mb-2 text-muted">Aluno: {{ project.author }}</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Orientador: {{ project.advisor }}</h6>
-                        </div>
-                    </div>
-                </div>
-            </a>
+<div *ngIf="initialized">
+    <div *ngIf="projects.length == 0" class="container-center">
+        <div>
+            <h1 [style]="'opacity:0.4;user-select:none'">Nenhum projeto encontrado :(</h1>
         </div>
     </div>
-</div>
 
-<!-- Modal -->
-<ng-template #deleteModal let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <div *ngIf="projects.length > 0" class="container mt-4">
+        <div class="row">
+            <div *ngFor="let project of projects" class="col-md-3 mb-4 d-flex">
+                <a (click)="goToDetail(project.id)" style="cursor: pointer; width: 100%;">
+                    <div class="card card-project h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ project.title }}
+                                <fa-icon class="project-trash" (click)="openDeleteModal($event, project.id)"
+                                    [icon]="faTrash"></fa-icon>
+                            </h5>
+                            <div class="stakeholder">
+                                <h6 class="card-subtitle mb-2 text-muted">Aluno: {{ project.author }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Orientador: {{ project.advisor }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="modal-body">
-        Você tem certeza que deseja excluir este projeto?
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancelar</button>
-        <button type="button" class="btn btn-danger"
-            (click)="confirmDelete(); modal.close('Save click')">Excluir</button>
-    </div>
-</ng-template>
+
+    <!-- Modal -->
+    <ng-template #deleteModal let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            Você tem certeza que deseja excluir este projeto?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancelar</button>
+            <button type="button" class="btn btn-danger"
+                (click)="confirmDelete(); modal.close('Save click')">Excluir</button>
+        </div>
+    </ng-template>
+</div>

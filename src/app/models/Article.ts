@@ -37,6 +37,7 @@ export class ArticleDTO{
 export class ArticleDeliveryDateViewModel{
     public id!: number
     public title!: string
+    public author!:string
     public advisor!: string
     public description!: string
     public advisorCurriculumLink!: string

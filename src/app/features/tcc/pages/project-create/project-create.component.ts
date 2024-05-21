@@ -67,8 +67,6 @@ export class ProjectCreateComponent {
     article.Description = (<HTMLTextAreaElement>document.getElementById('Description')).value;
     article.AdvisorId = Number((<HTMLSelectElement>document.getElementById('Advisor')).value);
     article.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value);
-    article.CoAdvisorCurriculumLink = (<HTMLSelectElement>document.getElementById('CoAdvisorCurriculumLink')).value;
-    article.AdvisorCurriculumLink = (<HTMLSelectElement>document.getElementById('AdvisorCurriculumLink')).value;
     
     this.articleService.create(article).subscribe({
       next: response => {

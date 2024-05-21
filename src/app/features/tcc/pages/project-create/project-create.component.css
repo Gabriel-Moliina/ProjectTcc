@@ -1,8 +1,8 @@
 .input-group-project{
-    margin-bottom: 15px;
+    margin-bottom: 1em;
 }
 
-form, .container{
+form{
     height: 100%;
     align-content: center;
 }

@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, UserLogin, UserToken } from '../models/User';
 import { ENVIRONMENT } from '../../environment';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -13,7 +12,7 @@ import { Router } from '@angular/router';
 export class UserService {
   baseUrl:string = `${ENVIRONMENT.apiUrl}/User`
 
-  constructor(private router: Router, private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.baseUrl}/Create`, user);
@@ -24,7 +23,7 @@ export class UserService {
   }
 
   logOut(){
-    this.cookieService.delete('tokenUser');
+    localStorage.removeItem('tokenUser');
     console.log(this.router.url)
     this.router.navigate(['/login']);
   }

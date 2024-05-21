@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENVIRONMENT } from '../../environment';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Article, ArticleDTO, ArticleDeliveryDateViewModel, ArticleGridViewModel } from '../models/Article';
 
@@ -13,7 +12,7 @@ import { Article, ArticleDTO, ArticleDeliveryDateViewModel, ArticleGridViewModel
 export class ArticleService {
   baseUrl:string = `${ENVIRONMENT.apiUrl}/Article`
 
-  constructor(private router: Router, private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   create(article: Article): Observable<ArticleDTO> {
     return this.http.post<ArticleDTO>(`${this.baseUrl}/Create`, article);

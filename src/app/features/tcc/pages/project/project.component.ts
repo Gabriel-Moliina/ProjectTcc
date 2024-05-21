@@ -7,7 +7,7 @@ import { NgxDropzoneChangeEvent, NgxDropzoneModule } from 'ngx-dropzone';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 import { ArticleService } from '../../../../services/ArticleService';
-import { ArticleScheduleViewModel } from '../../../../models/Article';
+import { ArticleDeliveryDateViewModel, ArticleScheduleViewModel } from '../../../../models/Article';
 
 @Component({
   selector: 'app-project',
@@ -17,38 +17,30 @@ import { ArticleScheduleViewModel } from '../../../../models/Article';
   styleUrls: ['./project.component.css'],
   providers: [ArticleService]
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent {
   formData: FormData = new FormData();
   files: File[] = [];
   hasProject: boolean = false;
-
-  projectTitle: string = '';
-  projectAdvisor: string = '';
-  projectDescription: string = '';
-  deliveryDates: ArticleScheduleViewModel[] = [];
-
   faRefresh = faRefresh;
+  project!: ArticleDeliveryDateViewModel
+  initialized: boolean = false;
 
   constructor(private router: Router, private articleService: ArticleService) {
     this.loadProjectData();
-   }
-
-  ngOnInit(): void {
-    this.loadProjectData();
   }
+
 
   loadProjectData(): void {
     this.articleService.getByAuthorId().subscribe(response => {
       this.hasProject = !!response;
       if (this.hasProject) {
-        this.projectTitle = response.title;
-        this.projectAdvisor = response.advisor;
-        this.projectDescription = response.description;
-        this.deliveryDates = response.deliveryDates;
+        this.project = response;
       }
     },
       error => {
 
+      }, () =>{
+          this.initialized = true;
       });
   }
 

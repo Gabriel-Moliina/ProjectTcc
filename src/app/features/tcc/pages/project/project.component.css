@@ -34,7 +34,6 @@
     animation-duration: 500ms;
     animation-timing-function: linear; 
 }
-
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -43,3 +42,7 @@
         transform:rotate(360deg);
     }
 }
+ngx-dropzone {
+    justify-content: center;
+  }
+
