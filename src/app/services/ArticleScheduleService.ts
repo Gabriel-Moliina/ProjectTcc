@@ -17,4 +17,8 @@ export class ArticleScheduleService {
     create(schedule: Schedule) {
         return this.http.post<any>(`${this.baseUrl}/Create`, schedule)
     }
+
+    delete(id:Number){
+        return this.http.delete<any>(`${this.baseUrl}/Delete/${id}`)
+    }
 }

@@ -50,6 +50,7 @@ export class ArticleDeliveryDateViewModel{
 }
 
 export class ArticleScheduleViewModel{
+    public id!:number
     public articleId!: number
     public description!: string
     public date!: Date

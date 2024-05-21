@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ArticleService } from '../../../../services/ArticleService';
 import { ArticleDeliveryDateViewModel } from '../../../../models/Article';
-import { faRefresh, faLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { faRefresh, faLeftLong, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleScheduleService } from '../../../../services/ArticleScheduleService';
 import { Schedule } from '../../../../models/Schedule';
@@ -63,6 +63,13 @@ export class ProjectDetailComponent {
     }
   }
 
+  deleteDateDelivery($id:number):void{
+    this.articleScheduleService.delete($id).subscribe({
+      error: (error) => {this.notificationService.showAlert('warning', error.error)}
+    })
+  }
+
   faRefresh = faRefresh
   faLeftLong = faLeftLong
+  faTrash=faTrash
 }
