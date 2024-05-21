@@ -46,6 +46,7 @@ export class ArticleDeliveryDateViewModel{
     public authorId!: number
     public advisorId!: number
     public coAdvisorId!: number
+    public isAccepted!: boolean
     public deliveryDates!: ArticleScheduleViewModel[]
 }
 

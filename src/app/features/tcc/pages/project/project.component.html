@@ -12,7 +12,8 @@
           <p>{{ project.description }}</p>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div *ngIf="!project.isAccepted">Aguardando confirmação do administrador</div>
+      <div *ngIf="project.isAccepted" class="col-lg-6">
         <div style="display: flex;">
           <div id="reload" class="icon-reload">
             <a (click)="loadData()">
