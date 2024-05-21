@@ -14,6 +14,7 @@ export class ButtonComponent {
   constructor() {
     this.clickButton = new EventEmitter()
   }
+  @Input({}) style!:string
   @Input({required: false}) textButton! : string;
   @Input({required: false}) type! : string;
   @Output() clickButton! : EventEmitter<void>;

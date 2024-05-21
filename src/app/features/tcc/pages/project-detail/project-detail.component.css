@@ -40,6 +40,10 @@
     color: black;
 }
 
+#back-page:hover{
+    color: #a50707;
+}
+
 .icon-reload:hover{
     animation-name: spin;
     animation-duration: 500ms;
@@ -52,4 +56,9 @@
     to {
         transform:rotate(360deg);
     }
+}
+
+#confirm-project{
+    position: absolute;
+    right: 20px;
 }
