@@ -18,7 +18,7 @@ import { NotificationService } from '../../../../services/NotificationService';
   styleUrls: ['./project-detail.component.css'],
   providers: [ArticleService, ArticleScheduleService]
 })
-export class ProjectDetailComponent implements OnInit {
+export class ProjectDetailComponent {
 
   createDelivery() {
     const [year, month, day] = (<HTMLInputElement>document.getElementById('Date')).value.split('-').map(Number);
@@ -38,13 +38,27 @@ export class ProjectDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, 
     private articleService: ArticleService, 
     private articleScheduleService: ArticleScheduleService,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService) { 
 
-  ngOnInit(): void {
+      this.loadProject();
+    }
+
+  loadProject():void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.articleService.getById(Number(id)).subscribe(response => {
         this.project = response;
+      })
+    }
+  }
+
+  loadData():void{
+    document.getElementById('reload')?.classList.add('icon-reload-animation')
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.articleService.getById(Number(id)).subscribe({
+        next: (response) => {this.project!.deliveryDates = response.deliveryDates},
+        complete: () =>{ setTimeout(() => {document.getElementById('reload')?.classList.remove('icon-reload-animation')}, 500)}
       })
     }
   }

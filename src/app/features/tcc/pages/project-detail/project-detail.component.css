@@ -23,12 +23,6 @@
     overflow-y: auto;
 }
 
-.icon-reload {
-    position: absolute;
-    right: 15px;
-    cursor: pointer;
-}
-
 #back-page{
     position: absolute;
     left: 20px; 
@@ -44,11 +38,19 @@
     color: #a50707;
 }
 
-.icon-reload:hover{
+
+.icon-reload {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+}
+
+.icon-reload-animation{
     animation-name: spin;
     animation-duration: 500ms;
     animation-timing-function: linear; 
 }
+
 @keyframes spin {
     from {
         transform:rotate(0deg);

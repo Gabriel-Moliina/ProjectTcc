@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../../core/components/button/button.component';
@@ -25,7 +25,7 @@ export class ProjectComponent {
   project!: ArticleDeliveryDateViewModel
   initialized: boolean = false;
 
-  constructor(private router: Router, private articleService: ArticleService) {
+  constructor(private route: ActivatedRoute, private router: Router, private articleService: ArticleService) {
     this.loadProjectData();
   }
 
@@ -42,6 +42,17 @@ export class ProjectComponent {
       }, () =>{
           this.initialized = true;
       });
+  }
+
+  loadData():void{
+    document.getElementById('reload')?.classList.add('icon-reload-animation')
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.articleService.getById(Number(id)).subscribe({
+        next: (response) => {this.project.deliveryDates = response.deliveryDates},
+        complete: () =>{ setTimeout(() => {document.getElementById('reload')?.classList.remove('icon-reload-animation')}, 500)}
+      })
+    }
   }
 
   onRemove(event: File) {
