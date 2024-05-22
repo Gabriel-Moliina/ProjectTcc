@@ -1,8 +1,8 @@
-.container{
+.container {
     height: 100%;
 }
 
-.container-center{
+.container-center {
     height: 100%;
     display: grid;
     justify-items: center;
@@ -30,22 +30,29 @@
     cursor: pointer;
 }
 
-.icon-reload-animation{
+.icon-reload-animation {
     animation-name: spin;
     animation-duration: 500ms;
-    animation-timing-function: linear; 
+    animation-timing-function: linear;
 }
 
 @keyframes spin {
     from {
-        transform:rotate(0deg);
+        transform: rotate(0deg);
     }
+
     to {
-        transform:rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
 ngx-dropzone {
     justify-content: center;
-  }
+}
 
+
+#waiting-admin {
+    text-align: right;
+    font-size: 25px;
+    border-bottom: #ccc solid;
+}
