@@ -64,3 +64,14 @@
     position: absolute;
     right: 20px;
 }
+
+.delete-date-delivery{
+    cursor: pointer;
+    color:rgb(56, 56, 56); text-decoration: none;
+    text-decoration: none;
+    z-index: 10000;
+}
+
+.delete-date-delivery:hover{
+    color: #a50707;
+}

@@ -12,6 +12,8 @@ export class NotificationService {
   showAlert(type: string, message: string): void {
     const alert = { type, message, show: true };
     this.alerts.push(alert);
+    if(this.alerts.length >= 3)
+      this.removeAlert(this.alerts[0]);
     setTimeout(() => {
       this.removeAlert(alert);
     }, 7000);

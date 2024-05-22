@@ -39,20 +39,18 @@ export class ProjectComponent {
     },
       error => {
 
-      }, () =>{
-          this.initialized = true;
+      }, () => {
+        this.initialized = true;
       });
   }
 
-  loadData():void{
+  loadData(): void {
     document.getElementById('reload')?.classList.add('icon-reload-animation')
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.articleService.getById(Number(id)).subscribe({
-        next: (response) => {this.project.deliveryDates = response.deliveryDates},
+    this.articleService.getByAuthorId().subscribe(
+      {
+        next: (response) => {this.project!.deliveryDates = response.deliveryDates},
         complete: () =>{ setTimeout(() => {document.getElementById('reload')?.classList.remove('icon-reload-animation')}, 500)}
       })
-    }
   }
 
   onRemove(event: File) {

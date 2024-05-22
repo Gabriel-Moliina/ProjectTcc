@@ -44,14 +44,18 @@ export class ProjectDetailComponent {
     if (id) {
       this.articleService.getById(Number(id)).subscribe({
         next: (response) => {this.project!.deliveryDates = response.deliveryDates},
-        complete: () =>{ setTimeout(() => {document.getElementById('reload')?.classList.remove('icon-reload-animation')}, 500)}
+        complete: () =>{ setTimeout(() => {document.getElementById('reload')?.classList.remove('icon-reload-animation')}, 500)},
       })
     }
   }
 
   deleteDateDelivery($id:number):void{
     this.articleScheduleService.delete($id).subscribe({
-      error: (error) => {this.notificationService.showAlert('warning', error.error)}
+      next: () => {
+        this.notificationService.showAlert('success', "Data de entrega removida com sucesso!")
+        this.loadData();
+      },
+      error: (error) => {this.notificationService.showAlert('warning', error.error)},
     })
   }
 
@@ -73,7 +77,8 @@ export class ProjectDetailComponent {
     
     this.articleScheduleService.create(new Schedule(this.project?.id ?? 0, date, description))
     .subscribe(response =>{
-      this.notificationService.showAlert('success', 'Data de entrega cadastrada')
+      this.notificationService.showAlert('success', 'Data de entrega cadastrada');
+      this.loadData();
     },
     error =>{
       this.notificationService.showAlert('warning', error.error)

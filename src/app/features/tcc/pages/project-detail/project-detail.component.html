@@ -40,7 +40,7 @@
             <tr *ngFor="let date of project?.deliveryDates">
               <td>{{ date.date | date : 'dd/MM/yyyy' }}</td>
               <td>{{ date.description }}</td>
-              <td><a (click)="deleteDateDelivery(date.id)"><fa-icon [icon]="faTrash"></fa-icon></a></td>
+              <td><a class="delete-date-delivery" (click)="deleteDateDelivery(date.id)"><fa-icon [icon]="faTrash"></fa-icon></a></td>
             </tr>
           </tbody>
         </table>
