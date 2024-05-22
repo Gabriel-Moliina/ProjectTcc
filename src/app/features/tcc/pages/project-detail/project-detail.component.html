@@ -3,11 +3,11 @@
     <a id="back-page" [routerLink]="'/tcc/projects'">
       <fa-icon [icon]="faLeftLong"></fa-icon>
     </a>
-    <h1>{{ project?.title }}</h1>
-    <button *ngIf="!project?.isAccepted" class="btn btn-success" style="position: absolute; right: 20px; z-index: 100000;">Confirmar</button>
+    <h1>{{ project.title }}</h1>
+    <button (click)="acceptProject(project.id)" *ngIf="!project?.isAccepted" class="btn btn-success" style="position: absolute; right: 20px; z-index: 100000;">Confirmar</button>
     <div class="info-stakeholder">
-      <span>Aluno: {{ project?.author }}</span><br/>
-      <span>Orientador: {{ project?.advisor }}</span>
+      <span>Aluno: {{ project.author }}</span><br/>
+      <span>Orientador: {{ project.advisor }}</span>
     </div>
   </header>
 
@@ -15,7 +15,7 @@
     <div class="col-lg-6">
       <div class="p-4">
         <h3>Descrição do Projeto</h3>
-        <p>{{ project?.description }}</p>
+        <p>{{ project.description }}</p>
       </div>
     </div>
     <div class="col-lg-6">

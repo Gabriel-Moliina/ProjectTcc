@@ -19,21 +19,7 @@ import { NotificationService } from '../../../../services/NotificationService';
   providers: [ArticleService, ArticleScheduleService]
 })
 export class ProjectDetailComponent {
-
-  createDelivery() {
-    const [year, month, day] = (<HTMLInputElement>document.getElementById('Date')).value.split('-').map(Number);
-    const date = new Date(year, month - 1, day);
-    const description = (<HTMLInputElement>document.getElementById('Description')).value;
-    
-    this.articleScheduleService.create(new Schedule(this.project?.id ?? 0, date, description))
-    .subscribe(response =>{
-      this.notificationService.showAlert('success', 'Data de entrega cadastrada')
-    },
-    error =>{
-      this.notificationService.showAlert('warning', error.error)
-    })
-  }
-  project: ArticleDeliveryDateViewModel | null = null;
+  project!: ArticleDeliveryDateViewModel
 
   constructor(private route: ActivatedRoute, 
     private articleService: ArticleService, 
@@ -66,6 +52,31 @@ export class ProjectDetailComponent {
   deleteDateDelivery($id:number):void{
     this.articleScheduleService.delete($id).subscribe({
       error: (error) => {this.notificationService.showAlert('warning', error.error)}
+    })
+  }
+
+  acceptProject($articleId:number):void{
+    this.articleService.acceptArticle($articleId).subscribe(
+      {
+        next: () => {
+          this.notificationService.showAlert('success', 'Projeto confirmado com sucesso!');
+          this.project.isAccepted = true;
+        }
+      }
+    )
+  }
+
+  createDelivery() {
+    const [year, month, day] = (<HTMLInputElement>document.getElementById('Date')).value.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    const description = (<HTMLInputElement>document.getElementById('Description')).value;
+    
+    this.articleScheduleService.create(new Schedule(this.project?.id ?? 0, date, description))
+    .subscribe(response =>{
+      this.notificationService.showAlert('success', 'Data de entrega cadastrada')
+    },
+    error =>{
+      this.notificationService.showAlert('warning', error.error)
     })
   }
 

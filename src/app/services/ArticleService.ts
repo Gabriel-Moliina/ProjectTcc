@@ -37,4 +37,8 @@ export class ArticleService {
   delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/Delete/${id}`);
   }
+
+  acceptArticle(articleId: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Accept/${articleId}`, null);
+  }
 }
