@@ -30,7 +30,7 @@
     <div class="row p-4">
         <div *ngFor="let advisor of advisors" class="col-4 mb-4 d-flex">
             <div class="card card-project h-100 p-2">
-                <fa-icon class="project-trash" (click)="openDeleteModal($event, advisor.id)" [icon]="faTrash"></fa-icon>
+                <fa-icon *ngIf="this.authService.isAdmin()" class="project-trash" (click)="openDeleteModal($event, advisor.id)" [icon]="faTrash"></fa-icon>
                 <div class="card-body">
                     <h5 class="card-title">
                         asdsadsadsadsaasdsadsads

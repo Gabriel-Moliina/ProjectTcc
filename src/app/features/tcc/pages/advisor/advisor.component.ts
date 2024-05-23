@@ -35,7 +35,8 @@ export class AdvisorComponent {
     private modalService: NgbModal,
     private notificationService: NotificationService,
     private courseService: CourseService) {
-    this.loadSelectBox();
+    this.loadAdvisors();
+    this.loadCoursesSelectBox();
   }
 
   deleteProject(advisorId: number): void {
@@ -50,13 +51,16 @@ export class AdvisorComponent {
     });
   }
 
-  loadSelectBox() {
+  loadAdvisors() {
     this.advisorService.getAll().subscribe({
       next: (response) => { this.advisors = response; }
     });
+  }
+
+  loadCoursesSelectBox(){
     this.courseService.getAll().subscribe({
       next: (reseponse) =>{ this.courses = reseponse }
-    })
+    });
   }
 
   openDeleteModal(event: Event, projectId: number): void {
@@ -72,14 +76,14 @@ export class AdvisorComponent {
 
   createAdvisor(): void{
     let name = (<HTMLInputElement>document.getElementById('Name')).value;
-    let courseId = Number((<HTMLSelectElement>document.getElementById('LinkCurriculum')).value);
-    let curriculumLink = (<HTMLInputElement>document.getElementById('Course')).value;
+    let courseId = Number((<HTMLSelectElement>document.getElementById('Course')).value);
+    let curriculumLink = (<HTMLInputElement>document.getElementById('LinkCurriculum')).value;
     let advisor = new Advisor(name, curriculumLink, courseId);
 
     this.advisorService.create(advisor).subscribe({
       next: ()=>{
         this.notificationService.showAlert('success', 'Orientador criado com sucesso!');
-        
+        this.loadAdvisors();
       },
       error: (error) => {this.notificationService.showAlert('error', error.error)}
     });

@@ -16,7 +16,7 @@ import { AdvisorService } from '../../../../services/AdvisorService';
   imports: [CommonModule, NgxDropzoneModule, FormsModule, ButtonComponent, RouterLink],
   templateUrl: './project-create.component.html',
   styleUrl: './project-create.component.css',
-  providers: [ArticleService]
+  providers: [ArticleService, AdvisorService]
 })
 export class ProjectCreateComponent {
   constructor(private articleService: ArticleService,
