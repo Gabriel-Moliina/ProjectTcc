@@ -1,19 +1,31 @@
-
 .notification-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-  }
-  
-  .alert {
-    margin-bottom: 10px;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  .alert.show {
-    opacity: 1;
-  }
-  
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.alert {
+  margin-bottom: 10px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.alert.show {
+  opacity: 1;
+}
+
+.remove-alert {
+  cursor: pointer; 
+  font-size: 12px; 
+  position: absolute; 
+  right: 7px; 
+  top: 2px;
+  text-decoration: none;
+  color: black;
+}
+
+.remove-alert:hover{
+  font-weight: 500;
+}

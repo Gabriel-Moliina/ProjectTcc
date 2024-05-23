@@ -1,13 +1,26 @@
-import { Course } from "./Course";
 
 export class Advisor{
-    public Id: number;
     public Name!: string;
-    public Course!: Course;
+    public CurriculumLink!:string;
+    public CourseId!: number;
 
-    constructor(id:number, name:string, course:Course){
-        this.Id = id,
-        this.Name = name,
-        this.Course = course
+    constructor(name:string, curriculumLink:string, courseId:number){
+        this.Name = name;
+        this.CurriculumLink = curriculumLink;
+        this.CourseId = courseId;
+    }
+}
+
+export class AdvisorGridViewModel{
+    public id:number;
+    public name:string;
+    public curriculumLink!:string;
+    public courseName!: string
+    /**
+     *
+     */
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
     }
 }

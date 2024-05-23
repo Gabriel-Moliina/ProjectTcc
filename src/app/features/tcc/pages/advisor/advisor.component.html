@@ -1,1 +1,62 @@
-<p>advisor works!</p>
+<div class="container pt-2">
+    <div *ngIf="this.authService.isAdmin()" class="row justify-content-md-center p-1">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Title">Nome</label>
+                <input type="text" class="form-control" id="Name">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="Title">Link Currículo Latters</label>
+                <input type="text" class="form-control" id="LinkCurriculum">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="Title">Curso</label>
+                <select class="form-select" id="Course">
+                    <option value="" disabled selected>Selecione</option>
+                    <option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2" style="align-self: end;">
+            <div class="form-group">
+                <button (click)="createAdvisor()" class="btn btn-success">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    <div class="row p-4">
+        <div *ngFor="let advisor of advisors" class="col-4 mb-4 d-flex">
+            <div class="card card-project h-100 p-2">
+                <fa-icon class="project-trash" (click)="openDeleteModal($event, advisor.id)" [icon]="faTrash"></fa-icon>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        asdsadsadsadsaasdsadsads
+                    </h5>
+                    <div class="stakeholder">
+                        <h6 class="card-subtitle mb-2 text-muted">Aluno: {{ advisor.courseName }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Orientador: {{ advisor.curriculumLink }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<ng-template #deleteModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        Você tem certeza que deseja excluir este orientador?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancelar</button>
+        <button type="button" class="btn btn-danger"
+            (click)="confirmDelete(); modal.close('Save click')">Excluir</button>
+    </div>
+</ng-template>

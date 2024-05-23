@@ -20,15 +20,15 @@
           <div class="form-group input-group-project">
             <label for="Advisor">Selecione um orientador</label>
             <select class="form-select" id="Advisor">
-              <option selected>Selecione um orientador</option>
-              <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
+              <option value="" disabled selected>Selecione</option>
+              <option *ngFor="let option of options" [value]="option.id">{{ option.name }}</option>
             </select>
           </div>
           <div class="form-group input-group-project">
             <label for="CoAdvisor">Selecione um co-orientador</label>
             <select class="form-select" id="CoAdvisor">
-              <option selected>Selecione um co-orientador</option>
-              <option *ngFor="let option of options" [value]="option.id">{{ option.text }}</option>
+              <option value="" disabled selected>Selecione</option>
+              <option *ngFor="let option of options" [value]="option.id">{{ option.name }}</option>
             </select>
           </div>
           <div style="text-align: center;margin-bottom: 15px;">

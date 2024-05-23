@@ -20,4 +20,8 @@ export class NotificationComponent implements OnInit {
   showAlert(type: string, message: string): void {
     this.notificationService.showAlert(type, message);
   }
+
+  removeAlert($alert:any):void{
+    this.notificationService.removeAlert($alert);
+  }
 }

@@ -7,6 +7,8 @@ import { Router, RouterLink } from '@angular/router';
 import { Article } from '../../../../models/Article';
 import { ArticleService } from '../../../../services/ArticleService';
 import { NotificationService } from '../../../../services/NotificationService';
+import { AdvisorGridViewModel } from '../../../../models/Advisor';
+import { AdvisorService } from '../../../../services/AdvisorService';
 
 @Component({
   selector: 'app-project-create',
@@ -17,33 +19,17 @@ import { NotificationService } from '../../../../services/NotificationService';
   providers: [ArticleService]
 })
 export class ProjectCreateComponent {
-  constructor(private articleService: ArticleService, private notificationService: NotificationService, private router: Router){
-
+  constructor(private articleService: ArticleService,
+    private notificationService: NotificationService, 
+    private router: Router,
+    private advisorService: AdvisorService){
+      this.loadAdvisors();
   }
 
   formData: FormData = new FormData();
   files: File[] = [];
 
-  options = [
-    { id: 0, text: 'Larissa do ADS', course: 'ADS' },
-    { id: 1, text: 'Larissa do meca', course: 'Mecatrônica' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' },
-    { id: 2, text: 'Larissa da gestão', course: 'Gestão' }
-  ]
+  options: AdvisorGridViewModel[] = []
 
   onRemove(event: File) {
     this.files.splice(this.files.indexOf(event), 1);
@@ -59,6 +45,12 @@ export class ProjectCreateComponent {
 
   nextStage() {
     this.etapaAtual++;
+  }
+
+  loadAdvisors(){
+    this.advisorService.getAll().subscribe({
+      next: (response) => {this.options = response}
+    })
   }
 
   createProject() {

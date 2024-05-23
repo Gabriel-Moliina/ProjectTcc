@@ -2,6 +2,7 @@
 <div class="notification-container">
     <div *ngFor="let alert of notificationService.alerts" class="alert" [ngClass]="'alert-' + alert.type" [class.show]="alert.show" role="alert">
       {{ alert.message }}
+      <a class="remove-alert" (click)="removeAlert(alert)">X</a>
     </div>
   </div>
   

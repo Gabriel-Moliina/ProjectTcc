@@ -1,0 +1,25 @@
+.project-trash {
+    position: absolute;
+    right: 10px;
+    top: 1px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out
+}
+
+.project-trash:hover{
+    color: rgb(153, 13, 13);
+}
+.card-project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.container-center{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
