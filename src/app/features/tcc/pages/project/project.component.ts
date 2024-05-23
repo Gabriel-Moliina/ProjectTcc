@@ -66,4 +66,16 @@ export class ProjectComponent {
   routeProjectCreate() {
     this.router.navigate(['/tcc/project/create']);
   }
+
+  linkDocument(){
+    let documentTcc = new FormData();
+    documentTcc.append('Id', this.project.id.toString())
+    documentTcc.append('FormFile', this.files[0]);
+
+    this.articleService.linkDocument(documentTcc).subscribe({
+      next: response =>{
+        this.router.navigate(['/tcc/project'])
+      }
+    })
+  }
 }
