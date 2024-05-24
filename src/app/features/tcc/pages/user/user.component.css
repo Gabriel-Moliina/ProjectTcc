@@ -11,43 +11,30 @@
     color: rgb(153, 13, 13);
 }
 
-.user-container{
-    height: 100%;
-}
-
-.info-student{
-    display: grid;
-    grid-template-columns:  250px auto;
-    height: 250px;
-}
-
-.descripton-student{
-    align-self: center;
-}
-
-.user-portrait{
-    width: 85%;
-    height: 85%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-}
-
-.image-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.descripton-student p{
+body {
+    background-color: #f8f9fa;
+    color: #333;
     margin: 0;
-    font-style: italic;
-    color: gray;
-}
-
-
-#user-imagem{
-    object-fit:cover;
-}
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  .content {
+    max-width: 600px;
+    padding: 20px;
+  }
+  .welcome-message {
+    font-size: 2em;
+    color: #500b0b;
+  }
+  .user-info {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  .site-description {
+    margin-top: 30px;
+    font-size: 1em;
+  }

@@ -1,18 +1,22 @@
 <span id="logOut">
     <a (click)="logOut()"><fa-icon [icon]="faSignOut"></fa-icon></a>
 </span>
-<div class="user-container">
-    <section class="info-student">
-        <div class="image-content">
-            <div class="user-portrait">
-                <img id="user-image" src="https://png.pngtree.com/background/20230612/original/pngtree-tree-is-rooted-on-top-of-the-land-picture-image_3180328.jpg" width="95%" height="95%">
-                <div class="line"></div>
-            </div>
-            
-        </div>
-        <div class="descripton-student">
-            <p>Gabriel Gomes Molina Rodrigues</p>
-            <p>RA: 123456789</p>
-        </div>
-    </section>
+
+<div class="content">
+    <div class="welcome-message">
+        Bem-vindo, {{ 'userName' }}!
+    </div>
+    <div class="user-info">
+        <p><strong>RA:</strong> {{ 'userRA' }}</p>
+        <p><strong>Email:</strong> {{ 'userEmail' }}</p>
+    </div>
+    <div class="site-description">
+        <p>
+            Este é o seu portal personalizado onde você pode acessar todas as informações relevantes sobre seus projetos
+            e documentos.
+            Navegue pelas diversas seções para encontrar materiais importantes, acompanhar seu progresso e muito mais.
+            Estamos aqui para ajudar você
+            a alcançar seus objetivos de forma eficiente e organizada.
+        </p>
+    </div>
 </div>
