@@ -1,24 +1,64 @@
-<div class="container container-fluid d-flex flex-column">
-  <header class="text-center py-4 separador">
-    <a id="back-page" [routerLink]="'/tcc/projects'">
-      <fa-icon [icon]="faLeftLong"></fa-icon>
-    </a>
-    <h1>{{ project.title }}</h1>
-    <button (click)="acceptProject(project.id)" *ngIf="!project?.isAccepted" class="btn btn-success"
-      style="position: absolute; right: 20px; z-index: 100000;">Confirmar</button>
-    <div class="info-stakeholder">
-      <span>Aluno: {{ project.author }}</span><br />
-      <span>Orientador: {{ project.advisor }}</span>
-    </div>
-  </header>
-
-  <div class="row flex-grow-1">
-    <div class="col-lg-6">
-      <div class="p-3 h-50">
-        <h3>Descrição do Projeto</h3>
-        <div style="height: 90%; max-height: auto; overflow: hidden; overflow-y: scroll">{{ project.description }}</div>
+<div class="container-screen">
+  <div class="container-fluid d-flex flex-column">
+    <header class="text-center py-4 separador">
+      <a id="back-page" [routerLink]="'/tcc/projects'">
+        <fa-icon [icon]="faLeftLong"></fa-icon>
+      </a>
+      <h1>{{ project.title }}</h1>
+      <button (click)="acceptProject(project.id)" *ngIf="!project?.isAccepted" class="btn btn-success"
+        style="position: absolute; right: 20px; z-index: 100000;">Confirmar</button>
+      <div class="info-stakeholder">
+        <span>Aluno: {{ project.author }}</span><br />
+        <span>Orientador: {{ project.advisor }}</span>
       </div>
-      <div class="tabela-scroll">
+    </header>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="p-3">
+          <h3>Descrição do Projeto</h3>
+          <div style="max-height: 100%; overflow-y: auto;">{{ project.description }}</div>
+        </div>
+      </div>
+      
+      
+      <div class="col">
+        <div class="p-3">
+          <div id="reload" class="icon-reload">
+            <a (click)="loadData()">
+              <fa-icon [icon]="faRefresh"></fa-icon>
+            </a>
+          </div>
+          <h3>Prazo de Entrega</h3>
+          <div class="tabela-scroll overflow-auto" style="height: calc(100% - 80px);">
+            <table class="table">
+              <thead>
+                <tr class="table-secondary">
+                  <th>Data</th>
+                  <th>Descrição</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let date of project?.deliveryDates">
+                  <td>{{ date.date | date : 'dd/MM/yyyy' }}</td>
+                  <td>{{ date.description }}</td>
+                  <td>
+                    <a class="delete-date-delivery" (click)="deleteDateDelivery(date.id)">
+                      <fa-icon [icon]="faTrash"></fa-icon>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="w-100"></div>
+
+      <div class="p-3 col tabela-scroll">
         <table class="table">
           <thead>
             <tr class="table-secondary">
@@ -29,54 +69,30 @@
           <tbody>
             <tr *ngFor="let article of project?.listArticleDocument">
               <td>{{ article.fileName }}</td>
-              <td style="text-align: center;"><a class="dowload-article"
-                  (click)="printDocument(article.base64File)"><fa-icon [icon]="faDownload"></fa-icon></a></td>
+              <td style="text-align: center;">
+                <a class="dowload-article" (click)="printDocument(article.base64File)">
+                  <fa-icon [icon]="faDownload"></fa-icon>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <div>
+
+
+      <div class="col">
         <div class="p-3">
-          <div id="reload" class="icon-reload">
-            <a (click)="loadData()">
-              <fa-icon [icon]="faRefresh"></fa-icon>
-            </a>
-          </div>
-          <h3>Prazo de Entrega</h3>
-        </div>
-        <div class="tabela-scroll">
-          <table class="table">
-            <thead>
-              <tr class="table-secondary">
-                <th>Data</th>
-                <th>Descrição</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let date of project?.deliveryDates">
-                <td>{{ date.date | date : 'dd/MM/yyyy' }}</td>
-                <td>{{ date.description }}</td>
-                <td><a class="delete-date-delivery" (click)="deleteDateDelivery(date.id)"><fa-icon
-                      [icon]="faTrash"></fa-icon></a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div>
-        <div class="row">
           <h3>Adicionar data de entrega</h3>
-          <div class="col-md-5">
-            <input id="Date" type="date" class="form-control" placeholder="Data de Entrega">
-          </div>
-          <div class="col-md-4">
-            <input id="Description" type="text" class="form-control" placeholder="Descrição da Entrega">
-          </div>
-          <div class="col-md-2">
-            <button class="btn btn-primary" (click)="createDelivery()">Adicionar</button>
+          <div class="row">
+            <div class="col-md-5">
+              <input id="Date" type="date" class="form-control" placeholder="Data de Entrega">
+            </div>
+            <div class="col-md-4">
+              <input id="Description" type="text" class="form-control" placeholder="Descrição da Entrega">
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary" (click)="createDelivery()">Adicionar</button>
+            </div>
           </div>
         </div>
       </div>

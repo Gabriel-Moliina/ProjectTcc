@@ -1,11 +1,5 @@
-.container{
+.container-screen{
     height: 100%;
-}
-
-.container-center{
-    height: 100%;
-    display: grid;
-    justify-items: center;
 }
 
 .info-stakeholder {
