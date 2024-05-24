@@ -1,52 +1,73 @@
-<div class="container-fluid d-flex flex-column">
+<div class="container container-fluid d-flex flex-column">
   <header class="text-center py-4 separador">
     <a id="back-page" [routerLink]="'/tcc/projects'">
       <fa-icon [icon]="faLeftLong"></fa-icon>
     </a>
     <h1>{{ project.title }}</h1>
-    <button (click)="acceptProject(project.id)" *ngIf="!project?.isAccepted" class="btn btn-success" style="position: absolute; right: 20px; z-index: 100000;">Confirmar</button>
+    <button (click)="acceptProject(project.id)" *ngIf="!project?.isAccepted" class="btn btn-success"
+      style="position: absolute; right: 20px; z-index: 100000;">Confirmar</button>
     <div class="info-stakeholder">
-      <span>Aluno: {{ project.author }}</span><br/>
+      <span>Aluno: {{ project.author }}</span><br />
       <span>Orientador: {{ project.advisor }}</span>
     </div>
   </header>
 
   <div class="row flex-grow-1">
     <div class="col-lg-6">
-      <div class="p-4">
+      <div class="p-3 h-50">
         <h3>Descrição do Projeto</h3>
-        <p>{{ project.description }}</p>
+        <div style="height: 90%; max-height: auto; overflow: hidden; overflow-y: scroll">{{ project.description }}</div>
+      </div>
+      <div class="tabela-scroll">
+        <table class="table">
+          <thead>
+            <tr class="table-secondary">
+              <th>Documentos</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let article of project?.listArticleDocument">
+              <td>{{ article.fileName }}</td>
+              <td style="text-align: center;"><a class="dowload-article"
+                  (click)="printDocument(article.base64File)"><fa-icon [icon]="faDownload"></fa-icon></a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="col-lg-6">
       <div>
+        <div class="p-3">
           <div id="reload" class="icon-reload">
             <a (click)="loadData()">
               <fa-icon [icon]="faRefresh"></fa-icon>
             </a>
           </div>
-        <h3>Prazo de Entrega</h3>
+          <h3>Prazo de Entrega</h3>
+        </div>
+        <div class="tabela-scroll">
+          <table class="table">
+            <thead>
+              <tr class="table-secondary">
+                <th>Data</th>
+                <th>Descrição</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let date of project?.deliveryDates">
+                <td>{{ date.date | date : 'dd/MM/yyyy' }}</td>
+                <td>{{ date.description }}</td>
+                <td><a class="delete-date-delivery" (click)="deleteDateDelivery(date.id)"><fa-icon
+                      [icon]="faTrash"></fa-icon></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="tabela-scroll">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Descrição</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let date of project?.deliveryDates">
-              <td>{{ date.date | date : 'dd/MM/yyyy' }}</td>
-              <td>{{ date.description }}</td>
-              <td><a class="delete-date-delivery" (click)="deleteDateDelivery(date.id)"><fa-icon [icon]="faTrash"></fa-icon></a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <div class="row">
+      <div>
+        <div class="row">
           <h3>Adicionar data de entrega</h3>
           <div class="col-md-5">
             <input id="Date" type="date" class="form-control" placeholder="Data de Entrega">
@@ -58,6 +79,7 @@
             <button class="btn btn-primary" (click)="createDelivery()">Adicionar</button>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

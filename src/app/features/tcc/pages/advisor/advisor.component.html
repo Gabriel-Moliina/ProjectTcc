@@ -29,15 +29,15 @@
     </div>
     <div class="row p-4">
         <div *ngFor="let advisor of advisors" class="col-4 mb-4 d-flex">
-            <div class="card card-project h-100 p-2">
+            <div class="card card-project h-100 p-2" style="width: 350px;">
                 <fa-icon *ngIf="this.authService.isAdmin()" class="project-trash" (click)="openDeleteModal($event, advisor.id)" [icon]="faTrash"></fa-icon>
                 <div class="card-body">
                     <h5 class="card-title">
-                        asdsadsadsadsaasdsadsads
+                        {{advisor.name}}
                     </h5>
                     <div class="stakeholder">
-                        <h6 class="card-subtitle mb-2 text-muted">Aluno: {{ advisor.courseName }}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Orientador: {{ advisor.curriculumLink }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Curso: {{ advisor.courseName }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Currículo: {{ advisor.curriculumLink }}</h6>
                     </div>
                 </div>
             </div>

@@ -72,6 +72,17 @@
     z-index: 10000;
 }
 
+.dowload-article{
+    cursor: pointer;
+    color:rgb(56, 56, 56); text-decoration: none;
+    text-decoration: none;
+    z-index: 10000;
+}
+
+.dowload-article:hover{
+    color: aqua;
+}
+
 .delete-date-delivery:hover{
     color: #a50707;
 }

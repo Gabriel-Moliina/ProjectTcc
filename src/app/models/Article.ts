@@ -48,6 +48,7 @@ export class ArticleDeliveryDateViewModel{
     public coAdvisorId!: number
     public isAccepted!: boolean
     public deliveryDates!: ArticleScheduleViewModel[]
+    public listArticleDocument!: ArticleDocumentViewModel[]
 }
 
 export class ArticleScheduleViewModel{
@@ -55,6 +56,12 @@ export class ArticleScheduleViewModel{
     public articleId!: number
     public description!: string
     public date!: Date
+}
+
+export class ArticleDocumentViewModel{
+    public fileName!: string
+    public articleId!: number
+    public base64File!: string
 }
 
 export class ArticleGridViewModel{

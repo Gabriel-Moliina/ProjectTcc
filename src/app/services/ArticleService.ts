@@ -10,7 +10,7 @@ import { Article, ArticleDTO, ArticleDeliveryDateViewModel, ArticleGridViewModel
 })
 
 export class ArticleService {
-  baseUrl:string = `${ENVIRONMENT.apiUrl}/Article`
+  baseUrl: string = `${ENVIRONMENT.apiUrl}/Article`
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -40,5 +40,9 @@ export class ArticleService {
 
   acceptArticle(articleId: number): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/Accept/${articleId}`, null);
+  }
+
+  getDocument(documentId: number): Observable<string> {
+    return this.http.post<any>(`${this.baseUrl}/GetDocument/${documentId}`, null);
   }
 }
