@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 import { ArticleService } from '../../../../services/ArticleService';
 import { ArticleDeliveryDateViewModel, ArticleScheduleViewModel } from '../../../../models/Article';
+import { NotificationService } from '../../../../services/NotificationService';
 
 @Component({
   selector: 'app-project',
@@ -25,7 +26,9 @@ export class ProjectComponent {
   project!: ArticleDeliveryDateViewModel
   initialized: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private articleService: ArticleService) {
+  constructor(private router: Router, 
+    private articleService: ArticleService,
+    private notificationService: NotificationService) {
     this.loadProjectData();
   }
 
@@ -74,7 +77,12 @@ export class ProjectComponent {
 
     this.articleService.linkDocument(documentTcc).subscribe({
       next: response =>{
-        this.router.navigate(['/tcc/project'])
+        debugger;
+        this.notificationService.showAlert('success', 'Documento enviado com sucesso!')
+        this.files = []
+      },
+      error: (error) =>{
+        this.notificationService.showAlert('warning', error.error)
       }
     })
   }
