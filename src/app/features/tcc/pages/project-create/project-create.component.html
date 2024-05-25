@@ -1,9 +1,5 @@
 <form>
-  <div style="position: absolute; top: 20px; left: 20px;" *ngIf="etapaAtual === 2">
-    <button class="btn btn-link" (click)="etapaAtual = 1">
-      <i class="bi bi-arrow-left"></i> Voltar
-    </button>
-  </div>
+    <a *ngIf="etapaAtual === 2" (click)="etapaAtual = 1"> Voltar</a>
 
   <div class="container" [ngStyle]="{'display': etapaAtual === 1 ? 'block' : 'none'}">
     <div class="row">

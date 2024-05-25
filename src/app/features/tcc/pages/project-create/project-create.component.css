@@ -21,3 +21,20 @@ textarea{
     min-height:100px;  
     max-height:100px;
 }
+
+a{
+    cursor: pointer;
+    position: absolute; 
+    top: 40px; 
+    left: 40px;
+    text-decoration: none;
+    color: #4b4b4b;
+    font-weight: bold;
+    transition: font-size 0.3s ease;
+    line-height: 1;
+    font-size: 1.3em;
+}
+
+a:hover{
+    color: black;
+}
