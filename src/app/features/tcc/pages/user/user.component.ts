@@ -12,8 +12,22 @@ import { UserService } from '../../../../services/UserService';
   providers: [UserService]
 })
 export class UserComponent {
+  userName: string = '';
+  userRA: string = '';
+  userEmail: string = '';
+
   constructor(private userService: UserService) {
-    
+    this.getLoggedUser();
+  }
+
+  getLoggedUser(){
+    this.userService.getLoggedUser().subscribe({
+      next: (response) =>{ 
+        this.userEmail = response.email;
+        this.userName = response.name;
+        this.userRA = response.ra;
+       }
+    })
   }
 
   logOut(){

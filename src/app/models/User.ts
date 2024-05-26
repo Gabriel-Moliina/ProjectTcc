@@ -39,3 +39,12 @@ class PopulateToken {
     ) {
     }
 }
+
+export class UserViewModel {
+    constructor(
+        public name: string,
+        public email: string,
+        public privateEmail: string,
+        public ra: string
+    ) { }
+}

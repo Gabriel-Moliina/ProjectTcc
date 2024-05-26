@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User, UserLogin, UserToken } from '../models/User';
+import { User, UserLogin, UserToken, UserViewModel } from '../models/User';
 import { ENVIRONMENT } from '../../environment';
 import { Router } from '@angular/router';
 
@@ -26,5 +26,9 @@ export class UserService {
     localStorage.removeItem('tokenUser');
     console.log(this.router.url)
     this.router.navigate(['/login']);
+  }
+
+  getLoggedUser(){
+    return this.http.get<UserViewModel>(`${this.baseUrl}/GetLoggedUser`);
   }
 }
