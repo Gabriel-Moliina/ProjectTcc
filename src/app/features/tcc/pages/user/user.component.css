@@ -23,7 +23,7 @@ body {
     text-align: center;
   }
   .content {
-    max-width: 600px;
+    width: 85%;
     padding: 20px;
   }
   .welcome-message {
@@ -35,6 +35,8 @@ body {
     font-size: 1.2em;
   }
   .site-description {
+    max-width: 900px;
     margin-top: 30px;
     font-size: 1em;
   }
+  
