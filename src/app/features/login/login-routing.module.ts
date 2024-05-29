@@ -12,7 +12,7 @@ const routes: Routes = [{
     { path: '', redirectTo: 'sign-in', pathMatch: 'full'},
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
-    { path: 'recover', component: RecoverComponent },
+    //{ path: 'recover', component: RecoverComponent },
   ]
 }];
 

@@ -26,7 +26,7 @@ export class SignUpComponent {
         this.userService.createUser(newUser)
             .subscribe({
                 next: response => {
-                    this.notificationService.showAlert('success', 'Verifique o seu e-mail para confirmar o cadastro');
+                    this.notificationService.showAlert('success', 'Cadastro realizado com sucesso');
                 },
                 error: error => {
                     this.notificationService.showAlert('warning', error.message);
