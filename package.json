@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "serve -s dist/ProjectTcc",
+    "build": "npm run build --legacy-peer-deps",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ProjectTcc": "node dist/project-tcc/server/server.mjs"
