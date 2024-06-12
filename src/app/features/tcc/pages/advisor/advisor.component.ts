@@ -46,7 +46,7 @@ export class AdvisorComponent {
         this.notificationService.showAlert('success', 'Projeto excluído!')
       },
       error: (error) => {
-        this.notificationService.showAlert('error', error.error)
+        this.notificationService.showAlert('warning', error.error)
       }
     });
   }
@@ -75,6 +75,7 @@ export class AdvisorComponent {
   }
 
   createAdvisor(): void{
+    debugger;
     let name = (<HTMLInputElement>document.getElementById('Name')).value;
     let courseId = Number((<HTMLSelectElement>document.getElementById('Course')).value);
     let curriculumLink = (<HTMLInputElement>document.getElementById('LinkCurriculum')).value;
@@ -85,7 +86,7 @@ export class AdvisorComponent {
         this.notificationService.showAlert('success', 'Orientador criado com sucesso!');
         this.loadAdvisors();
       },
-      error: (error) => {this.notificationService.showAlert('error', error.error)}
+      error: (error) => {this.notificationService.showAlert('warning', error.error)}
     });
   }
 

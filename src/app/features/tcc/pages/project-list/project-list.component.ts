@@ -46,7 +46,7 @@ export class ProjectListComponent {
       this.projects = this.projects.filter(project => project.id !== projectId);
       this.notificationService.showAlert('success', 'Projeto excluído!')
     }, error => {
-      this.notificationService.showAlert('error', error.error)
+      this.notificationService.showAlert('warning', error.error)
     });
   }
 
