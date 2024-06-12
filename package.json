@@ -5,6 +5,7 @@
     "ng": "ng",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of c55420c (Atualizando dependencias)
     "start": "ng serve",
@@ -20,6 +21,12 @@
 >>>>>>> parent of 2341ec6 (Atualizando)
 =======
 >>>>>>> parent of c55420c (Atualizando dependencias)
+=======
+    "start": "serve -s dist/ProjectTcc",
+    "build": "npm run build --legacy-peer-deps",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+>>>>>>> parent of 345a7aa (Teste)
     "serve:ssr:ProjectTcc": "node dist/project-tcc/server/server.mjs"
   },
   "private": true,
