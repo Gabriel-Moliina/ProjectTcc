@@ -54,12 +54,12 @@ export class ProjectCreateComponent {
   }
 
   createProject() {
-    let article = new Article('', '', 0, 0);
+    let article = new Article('', '', 0);
     article.Title = (<HTMLInputElement>document.getElementById('Title')).value;
     article.Description = (<HTMLTextAreaElement>document.getElementById('Description')).value;
     article.AdvisorId = Number((<HTMLSelectElement>document.getElementById('Advisor')).value);
-    article.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value);
-    
+    if(Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value) > 0)
+      article.CoAdvisorId = Number((<HTMLSelectElement>document.getElementById('CoAdvisor')).value);
     this.articleService.create(article).subscribe({
       next: response => {
           let documentTcc = new FormData();

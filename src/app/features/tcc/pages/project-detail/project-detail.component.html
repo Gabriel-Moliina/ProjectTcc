@@ -9,7 +9,8 @@
         style="position: absolute; right: 20px; z-index: 100000;">Confirmar</button>
       <div class="info-stakeholder">
         <span>Aluno: {{ project.author }}</span><br />
-        <span>Orientador: {{ project.advisor }}</span>
+        <span>Orientador: {{ project.advisor }}</span><br/>
+        <span *ngIf="project.coAdvisor">Co-Orientador: {{project.coAdvisor}}</span>
       </div>
     </header>
   </div>

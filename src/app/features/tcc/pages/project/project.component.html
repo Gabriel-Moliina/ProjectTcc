@@ -3,6 +3,7 @@
     <header class="text-center py-4 separador">
       <h1>{{ project.title }}</h1>
       <div class="orientador">Orientador: {{ project.advisor }}</div>
+      <div *ngIf="project.coAdvisor" class="orientador">Co-Orientador: {{ project.coAdvisor }}</div>
     </header>
 
     <div class="row flex-grow-1">

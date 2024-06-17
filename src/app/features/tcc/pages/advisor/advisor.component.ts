@@ -39,11 +39,11 @@ export class AdvisorComponent {
     this.loadCoursesSelectBox();
   }
 
-  deleteProject(advisorId: number): void {
+  deleteAdvisor(advisorId: number): void {
     this.advisorService.delete(advisorId).subscribe({
       next: () => {
         this.advisors = this.advisors.filter(advisor => advisor.id !== advisorId);
-        this.notificationService.showAlert('success', 'Projeto excluído!')
+        this.notificationService.showAlert('success', 'Orientador excluído!')
       },
       error: (error) => {
         this.notificationService.showAlert('warning', error.error)
@@ -70,7 +70,7 @@ export class AdvisorComponent {
   }
 
   confirmDelete(): void {
-    this.deleteProject(this.selectedAdvisorId);
+    this.deleteAdvisor(this.selectedAdvisorId);
     this.modalRef.close();
   }
 
